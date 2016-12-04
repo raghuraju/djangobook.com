@@ -544,20 +544,24 @@ project. By default, it looks something like this::
         'django.contrib.contenttypes',
         'django.contrib.sessions',
         'django.contrib.sites',
+        'django.contrib.messages',
+        'django.contrib.staticfiles',
     )
 
-Temporarily comment out all four of those strings by putting a hash character
+Temporarily comment out all six of those strings by putting a hash character
 (``#``) in front of them. (They're included by default as a common-case
 convenience, but we'll activate and discuss them in subsequent chapters.)
 While you're at it, comment out the default ``MIDDLEWARE_CLASSES`` setting, too;
 the default values in ``MIDDLEWARE_CLASSES`` depend on some of the apps we
-just commented out. Then, add  ``'mysite.books'`` to the ``INSTALLED_APPS``
+just commented out. Then, add  ``'books'`` to the ``INSTALLED_APPS``
 list, so the setting ends up looking like this::
 
     MIDDLEWARE_CLASSES = (
         # 'django.middleware.common.CommonMiddleware',
         # 'django.contrib.sessions.middleware.SessionMiddleware',
+        # 'django.middleware.csrf.CsrfViewMiddleware',
         # 'django.contrib.auth.middleware.AuthenticationMiddleware',
+        # 'django.contrib.messages.middleware.MessageMiddleware',
     )
 
     INSTALLED_APPS = (
@@ -565,7 +569,7 @@ list, so the setting ends up looking like this::
         # 'django.contrib.contenttypes',
         # 'django.contrib.sessions',
         # 'django.contrib.sites',
-        'mysite.books',
+        'books',
     )
 
 (As we mentioned last chapter when setting ``TEMPLATE_DIRS``, you'll need to be
@@ -1379,5 +1383,7 @@ user-submitted form data.
 
 But in some cases, you or your team might need to enter data manually, in which
 case it would be helpful to have a Web-based interface for entering and
-managing data. The :doc:`next chapter <chapter06>` covers Django's admin interface, which exists
+managing data. The next chapter `Chapter 6`_ covers Django's admin interface, which exists
 precisely for that reason.
+
+.. _Chapter 6: chapter06.html
